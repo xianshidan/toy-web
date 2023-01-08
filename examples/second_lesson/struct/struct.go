@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
+	// go没构造函数
 	// duck1 是 *ToyDuck
 	duck1 := &ToyDuck{}
 	duck1.Swim()
@@ -11,6 +12,8 @@ func main() {
 	duck2.Swim()
 
 	// duck3 是 *ToyDuck
+	// 一般的语言（1.分配内存 2.执行构造函数）
+	// go 没有构造函数
 	duck3 := new(ToyDuck)
 	duck3.Swim()
 
@@ -19,10 +22,11 @@ func main() {
 	var duck4 ToyDuck
 	duck4.Swim()
 
-	// duck5 就是一个指针了
-	var duck5 *ToyDuck
+	// duck5 就是一个指针了，如果声明了一个指针，但是没有赋值，那么它是nil
+	// 和c, c++ 一样，*表示指针，&取地址
+	//var duck5 *ToyDuck
 	// 这边会直接panic 掉
-	duck5.Swim()
+	//duck5.Swim()
 
 	// 赋值，初始化按字段名字赋值
 	duck6 := ToyDuck{
@@ -32,13 +36,12 @@ func main() {
 	duck6.Swim()
 
 	// 初始化按字段顺序赋值，不建议使用
-	duck7 := ToyDuck{"蓝色", 1024}
-	duck7.Swim()
+	//duck7 := ToyDuck{"蓝色", 1024}
+	//duck7.Swim()
 
 	// 后面再单独赋值
 	duck8 := ToyDuck{}
 	duck8.Color = "橘色"
-
 }
 
 // ToyDuck 玩具鸭
@@ -50,5 +53,3 @@ type ToyDuck struct {
 func (t *ToyDuck) Swim() {
 	fmt.Printf("门前一条河，游过一群鸭，我是%s，%d一只\n", t.Color, t.Price)
 }
-
-

@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	name:="Tom"
+	name := "Tom"
 	age := 17
 	// 这个 API 是返回字符串的，所以大多数时候我们都是用这个
 	str := fmt.Sprintf("hello, I am %s, I am %d years old \n", name, age)
@@ -18,7 +18,7 @@ func main() {
 func replaceHolder() {
 	u := &user{
 		Name: "Tom",
-		Age: 17,
+		Age:  17,
 	}
 	fmt.Printf("v => %v \n", u)
 	fmt.Printf("+v => %+v \n", u)
@@ -28,5 +28,5 @@ func replaceHolder() {
 
 type user struct {
 	Name string
-	Age int
+	Age  int
 }

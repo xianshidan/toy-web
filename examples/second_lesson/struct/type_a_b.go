@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+)
 
 func main() {
 	fake := FakeFish{}
@@ -23,14 +26,14 @@ func main() {
 	td.Swim()
 }
 
-// 定义了一个新类型，注意是新类型
+// FakeFish 定义了一个新类型，注意是新类型
 type FakeFish Fish
 
 func (f FakeFish) FakeSwim() {
 	fmt.Printf("我是山寨鱼，嘎嘎嘎\n")
 }
 
-// 定义了一个新类型
+// StrongFakeFish 定义了一个新类型
 type StrongFakeFish Fish
 
 func (f StrongFakeFish) Swim() {
@@ -42,4 +45,10 @@ type Fish struct {
 
 func (f Fish) Swim() {
 	fmt.Printf("我是鱼，假装自己是一直鸭子\n")
+}
+
+// Server1 可以放到其它包里面，这里不需要引用包，也可以实现接口
+type Server1 interface {
+	Router(pattern string, handlerFunc http.HandlerFunc)
+	Start(address string) error
 }
